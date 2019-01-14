@@ -15,16 +15,25 @@ $xsm: 320px; // phones
         width: 310px;
         margin: 20px;
         vertical-align: top;
-        @media (max-width: 424px){
+
+        @media (max-width: 424px) {
             margin: 20px 10px;
         }
 
+        .loading-container{
+            height: 257px;
+            background: #fff;
+            width: 100%;
+            @media (max-width: $sm){
+                height: 120px;
+            }
+        }
         .card {
             height: fit-content;
             background: white;
             margin: -5px;
 
-            .card-content{
+            .card-content {
                 background: cadetblue;
                 display: flex;
                 flex-direction: column;
@@ -32,9 +41,16 @@ $xsm: 320px; // phones
                 align-items: center;
                 height: 100%;
             }
+
             img {
                 height: 257px;
+                width: 100%;
                 margin: 0 auto;
+
+                &::before {
+                    width: 99%;
+                    height: inherit;
+                }
             }
 
             .card-body {
@@ -43,6 +59,9 @@ $xsm: 320px; // phones
                 font-size: 24px;
                 font-weight: 900;
                 color: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
             &:hover {
@@ -51,7 +70,6 @@ $xsm: 320px; // phones
             }
 
             @media (max-width: $md) {
-
                 .card-image {
                     height: 150px;
                 }
@@ -60,31 +78,40 @@ $xsm: 320px; // phones
 
         @media (max-width: $md) {
             width: 200px;
-            .card-content{
-                img{
-                    width: 200px;
+
+            .card-content {
+                img::before {
+                    width: 98%;
                 }
             }
         }
+
         @media (max-width: $sm) {
             min-height: 150px;
             width: 116px;
-            .card-content{
-                img{
+
+            .card-content {
+                img {
                     height: 120px;
-                    width: 116px;
+
+                    &::before {
+                        width: 97%;
+                    }
                 }
-                .card-body{
+
+                .card-body {
                     font-size: 15px;
                     padding: 0 10px;
                 }
             }
         }
+
         @media (max-width: 424px) {
             width: 90px;
-            .card-content{
-                img{
-                    width: 90px;
+
+            .card-content {
+                img::before {
+                    width: 96%;
                 }
             }
         }

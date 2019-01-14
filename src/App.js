@@ -43,26 +43,32 @@ class App extends Component {
 
             storageRef
                 .getDownloadURL()
+
                 .then(url => {
+                    console.log(url);
                     const newArr = [...arr];
                     newArr[key].image = url;
                     this.setState(prevState => {
                         return {
                             ...prevState,
                             fetched: true,
+                            triedFetch: true,
                             arr: newArr
                         };
                     });
                 })
-                .catch(function(error) {
-                    console.log({ error });
+                .catch(error => {
+                    // alert(error);
+                    this.setState({
+                        fetched: false,
+                        triedFetch: true
+                    });
                 });
         }
-
         window.addEventListener("scroll", this.listenToScroll);
     }
 
-    listenToScroll = e => {
+    listenToScroll = () => {
         const { key1, key2 } = this.state.keyArray;
         if (key1 !== null && key2 !== null) {
             const statsScroll = this.Stats._reactInternalFiber.child.stateNode
@@ -133,7 +139,14 @@ class App extends Component {
     };
 
     render() {
-        const { arr, keyArray, filled, fetched, displayAnim } = this.state;
+        const {
+            arr,
+            keyArray,
+            filled,
+            fetched,
+            triedFetch,
+            displayAnim
+        } = this.state;
         let characters = [];
         let chars = [];
 
@@ -142,6 +155,9 @@ class App extends Component {
                 <Cards
                     key={arr[i].name.toString()}
                     id={i}
+                    fetched={fetched}
+                    triedFetch={triedFetch}
+                    spinner={<Spinner />}
                     name={arr[i].name}
                     handler={this.handleSelection}
                     image={arr[i].image}
@@ -152,6 +168,9 @@ class App extends Component {
                 <Cards
                     key={arr[i].name.toString()}
                     id={i}
+                    fetched={fetched}
+                    triedFetch={triedFetch}
+                    spinner={<Spinner />}
                     name={arr[i].name}
                     handler={this.updateSlots}
                     image={arr[i].image}
@@ -218,9 +237,6 @@ class App extends Component {
 
         const renderStats = keyArray.key1 !== null && keyArray.key2 !== null;
 
-        if (!fetched) {
-            return <Spinner text={"Loading..."} />;
-        }
         return (
             <div>
                 <header>
