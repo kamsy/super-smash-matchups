@@ -48,21 +48,21 @@ export function register(config) {
                     );
                 });
             } else {
-                caches.open("ssmb-assets").then(cache => {
-                    // do something with cache...
+                // caches.open("ssmb-assets").then(cache => {
+                //     // do something with cache...
 
-                    console.log("cache opened in line 53 boss", cache);
-                    return cache.addAll([
-                        "/public/android-chrome-192x192.png",
-                        "/public/android-chrome-256x256.png",
-                        "/public/android-chrome-512x512.png",
-                        "/public/apple-touch-icon.png",
-                        "/public/favicon-16x16.png",
-                        "/public/favicon-32x32.png",
-                        "/public/safari-pinned-tab.svg",
-                        "/public/mstile-150x150.png"
-                    ]);
-                });
+                //     console.log("cache opened in line 53 boss", cache);
+                //     return cache.addAll([
+                //         "/public/android-chrome-192x192.png",
+                //         "/public/android-chrome-256x256.png",
+                //         "/public/android-chrome-512x512.png",
+                //         "/public/apple-touch-icon.png",
+                //         "/public/favicon-16x16.png",
+                //         "/public/favicon-32x32.png",
+                //         "/public/safari-pinned-tab.svg",
+                //         "/public/mstile-150x150.png"
+                //     ]);
+                // });
 
                 // Is not localhost. Just register service worker
                 registerValidSW(swUrl, config);
@@ -137,21 +137,21 @@ function checkValidServiceWorker(swUrl, config) {
             } else {
                 // Service worker found. Proceed as normal.
                 console.log("i dey here");
-                caches.open("ssmb-assets").then(cache => {
-                    // do something with cache...
+                // caches.open("ssmb-assets").then(cache => {
+                //     // do something with cache...
 
-                    console.log("cache opened in line 220 boss", cache);
-                    return cache.addAll([
-                        "/public/android-chrome-192x192.png",
-                        "/public/android-chrome-256x256.png",
-                        "/public/android-chrome-512x512.png",
-                        "/public/apple-touch-icon.png",
-                        "/public/favicon-16x16.png",
-                        "/public/favicon-32x32.png",
-                        "/public/safari-pinned-tab.svg",
-                        "/public/mstile-150x150.png"
-                    ]);
-                });
+                //     console.log("cache opened in line 220 boss", cache);
+                //     return cache.addAll([
+                //         "/public/android-chrome-192x192.png",
+                //         "/public/android-chrome-256x256.png",
+                //         "/public/android-chrome-512x512.png",
+                //         "/public/apple-touch-icon.png",
+                //         "/public/favicon-16x16.png",
+                //         "/public/favicon-32x32.png",
+                //         "/public/safari-pinned-tab.svg",
+                //         "/public/mstile-150x150.png"
+                //     ]);
+                // });
                 registerValidSW(swUrl, config);
             }
         })
